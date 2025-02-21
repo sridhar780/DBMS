@@ -1,0 +1,81 @@
+
+SQL> CREATE TABLE Department (
+  2      DeptId INT NOT NULL,
+  3      DeptName VARCHAR(100) NOT NULL,
+  4      PRIMARY KEY (DeptId)
+  5  );
+
+Table created.
+
+SQL> CREATE TABLE Employee222 (
+  2      EmpId VARCHAR(10) NOT NULL,
+  3      EmpName VARCHAR(100),
+  4      DOJ DATE,
+  5      DepartmentId number(10),
+  6      CONSTRAINT empid_pattern CHECK (EmpId LIKE 'E_ _ _'),
+  7      FOREIGN KEY (DepartmentId) REFERENCES Department(DeptId));
+
+Table created.
+
+
+
+SQL> INSERT INTO Department values(&DeptId,'&DeptName');
+Enter value for deptid: 1
+Enter value for deptname: Developer
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 2
+Enter value for deptname: test engineer
+
+1 row created.
+
+SQL> /
+Enter value for deptid: 3
+Enter value for deptname: fullsatck developer
+
+
+1 row created.
+
+
+
+
+SQL> INSERT INTO Employee222 values('&EmpId', '&EmpName', '&DOJ', '&DepartmentId');
+Enter value for empid: E101
+Enter value for empname: raj
+Enter value for doj: 01-DEC-2004
+Enter value for departmentid: 1
+
+                            
+
+
+
+SQL> INSERT INTO Employee111 values('&EmpId', '&EmpName', '&DOJ', '&DepartmentId');
+Enter value for empid: E121
+Enter value for empname: ramu
+Enter value for doj: 01-Feb-2000
+Enter value for departmentid: 1
+
+
+
+
+SQL> INSERT INTO Employee111 values('&EmpId', '&EmpName', '&DOJ', &DepartmentId);
+Enter value for empid: E102
+Enter value for empname: raj
+Enter value for doj: 01-jan-2000
+Enter value for departmentid: 1
+
+
+
+SQL> INSERT INTO Employee111 values('&EmpId', '&EmpName', '&DOJ', &DepartmentId);
+Enter value for empid: Emp105
+Enter value for empname: rajesh
+Enter value for doj: 01-jan-9000
+Enter value for departmentid: 1
+
+
+                               
+SQL> commit;
+
+Commit complete.
